@@ -1,8 +1,8 @@
 {
   "name": "rxrs",
-  "version": "0.0.1",
-  "description": "",
-  "keywords": [],
+  "version": "0.0.2",
+  "description": "A library enabling the easy use of reactive responsive design in any project!",
+  "keywords": ["rxjs", "reactive", "responsive"],
   "main": "dist/rxrs.umd.js",
   "module": "dist/rxrs.es5.js",
   "typings": "dist/types/rxrs.d.ts",
@@ -114,6 +114,6 @@
     "validate-commit-msg": "^2.12.2"
   },
   "peerDependencies": {
-    "rxjs": "^6.2.2"
+    "rxjs": "^5.0.0 || ^6.0.0"
   }
 }
