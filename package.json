@@ -1,6 +1,6 @@
 {
   "name": "rxrs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "main": "dist/rxrs.umd.js",
@@ -12,7 +12,7 @@
   "author": "Michael Madsen",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/mgm87/rxrs"
   },
   "license": "MIT",
   "engines": {
@@ -31,7 +31,8 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -64,16 +65,18 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
+        "branches": 50,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     },
-    "collectCoverage": true
+    "collectCoverage": true,
+    "testEnvironment": "jsdom",
+    "testURL": "http://localhost/"
   },
   "prettier": {
-    "semi": false,
+    "semi": true,
     "singleQuote": true
   },
   "devDependencies": {
@@ -85,6 +88,7 @@
     "cross-env": "^5.0.1",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.14.0",
+    "jasmine-marbles": "^0.3.1",
     "jest": "^22.0.2",
     "lint-staged": "^7.1.3",
     "lodash.camelcase": "^4.3.0",
@@ -98,7 +102,8 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.11.1",
-    "semantic-release": "^15.0.0",
+    "semantic-release": "^15.9.3",
+    "travis-deploy-once": "^5.0.1",
     "ts-jest": "^22.0.0",
     "ts-node": "^6.0.0",
     "tslint": "^5.8.0",
@@ -107,5 +112,8 @@
     "typedoc": "^0.11.0",
     "typescript": "^2.6.2",
     "validate-commit-msg": "^2.12.2"
+  },
+  "peerDependencies": {
+    "rxjs": "^6.2.2"
   }
 }
