@@ -1,7 +1,7 @@
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 
-import RxRs from '../src/rxrs';
+import { RxRs } from '../src/rxrs';
 
 /**
  * RxRs
@@ -93,32 +93,32 @@ describe('RxRs', () => {
     });
   });
 
-  // describe('testQuery', () => {
-  //   it('should get next observable value when callback is called', () => {
-  //     // Arrange
-  //     let callbackFn: Function;
-  //     global.window.matchMedia = () => {
-  //       return {
-  //         matches: () => false,
-  //         addListener: (callback: Function) => {
-  //           callbackFn = callback;
-  //           return;
-  //         }
-  //       };
-  //     };
-  //     const rxrs = new RxRs();
-  //     const queryString = '(max-width: 480px)';
-  //     const actual = rxrs.observe(queryString);
-  //     const expected = cold('a', { a: true });
+  describe('testQuery', () => {
+    it('should get next observable value when callback is called', () => {
+      // Arrange
+      let callbackFn: Function;
+      global.window.matchMedia = () => {
+        return {
+          matches: () => false,
+          addListener: (callback: Function) => {
+            callbackFn = callback;
+            return;
+          }
+        };
+      };
+      const rxrs = new RxRs();
+      const queryString = '(max-width: 480px)';
+      const actual = rxrs.observe(queryString);
+      const expected = cold('a', { a: true });
 
-  //     // Act
-  //     callbackFn({
-  //       media: queryString,
-  //       matches: true
-  //     });
+      // Act
+      callbackFn({
+        media: queryString,
+        matches: true
+      });
 
-  //     // Assert
-  //     expect(actual).toBeObservable(expected);
-  //   });
-  // });
+      // Assert
+      expect(actual).toBeObservable(expected);
+    });
+  });
 });

@@ -1,6 +1,6 @@
 {
   "name": "rxrs",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A library enabling the easy use of reactive responsive design in any project!",
   "keywords": ["rxjs", "reactive", "responsive"],
   "main": "dist/rxrs.umd.js",

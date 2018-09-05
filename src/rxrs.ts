@@ -4,7 +4,7 @@
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export default class RxRs {
+export class RxRs {
   private topWindow: Window;
   private windowSizeSubjects: SizeSubjects = {};
 
@@ -19,7 +19,7 @@ export default class RxRs {
     if (!subject) {
       const mql = this.topWindow.matchMedia(query);
       this.windowSizeSubjects[querystring] = new BehaviorSubject(mql.matches);
-      mql.addListener(this.testQuery);
+      mql.addListener(this.testQuery.bind(this));
       subject = this.windowSizeSubjects[querystring];
     }
 
@@ -30,8 +30,8 @@ export default class RxRs {
     return query.toLowerCase().replace(/\s/g, '');
   }
 
-  private testQuery(e: any): void {
-    const subject = this.windowSizeSubjects[this.uglifyQuery(e.media)];
+  private testQuery(e: any, subjects = this.windowSizeSubjects): void {
+    const subject = subjects[this.uglifyQuery(e.media)];
     if (subject) {
       subject.next(e.matches);
     }
