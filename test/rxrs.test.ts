@@ -65,8 +65,9 @@ describe('RxRs', () => {
     it('should return a new observable for a new query string', () => {
       // Arrange
       let firstCall = true;
-      global.window.matchMedia = () => {
+      global.window.matchMedia = query => {
         return {
+          media: query,
           matches: () => {
             if (firstCall) {
               firstCall = false;
@@ -97,8 +98,10 @@ describe('RxRs', () => {
     it('should get next observable value when callback is called', () => {
       // Arrange
       let callbackFn: Function;
+      const queryString = '(max-width: 480px)';
       global.window.matchMedia = () => {
         return {
+          media: queryString,
           matches: () => false,
           addListener: (callback: Function) => {
             callbackFn = callback;
@@ -107,7 +110,6 @@ describe('RxRs', () => {
         };
       };
       const rxrs = new RxRs();
-      const queryString = '(max-width: 480px)';
       const actual = rxrs.observe(queryString);
       const expected = cold('a', { a: true });
 
